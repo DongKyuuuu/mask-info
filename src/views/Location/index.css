@@ -1,0 +1,19 @@
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+
+.search {
+  width: 100vw;
+  height: 50px;
+  display: flex;
+  position: absolute;
+  z-index: 2;
+  justify-content: center;
+
+  margin-top: 30px;
+}
+
+.search input {
+  width: 600px;
+}
