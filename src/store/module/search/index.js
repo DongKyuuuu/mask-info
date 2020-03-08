@@ -1,5 +1,6 @@
 import axios from 'axios';
 import API from '@/assets/common/api.js';
+import appKey from '@/assets/common/appKey.js';
 
 export default {
   namespaced: true,
@@ -21,6 +22,20 @@ export default {
             return reject(e);
           });
       });
+    },
+    async getAddress({}, payload) {
+      try {
+        const result = await axios.get(`${API.search}?query=${payload}`, {
+          headers: {
+            Authorization: `KakaoAK ${appKey}`
+          }
+        });
+
+        if (result.statusText === 'OK') return result.data;
+        else throw result.data;
+      } catch (e) {
+        return e;
+      }
     }
   }
 };
