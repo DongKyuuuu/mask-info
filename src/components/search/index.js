@@ -26,6 +26,20 @@ export default {
         else
           this.page.total = 1 + Math.floor(this.lists.length / this.page.show);
       } catch (e) {}
+    },
+    changeCenter(lng, lat) {
+      const payload = {
+        lng: lng,
+        lat: lat
+      };
+      this.$emit('list', payload);
+      this.q = '';
+      this.lists = '';
+      this.page = {
+        total: 0,
+        per: 0,
+        show: 8
+      };
     }
   },
   computed: {

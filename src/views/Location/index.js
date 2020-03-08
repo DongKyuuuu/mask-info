@@ -12,6 +12,10 @@ export default {
     };
   },
   methods: {
+    changeGeo(val) {
+      console.log(val.lat);
+      console.log(val.lng);
+    },
     maskInfo(lat, lng, levelData) {
       const payload = {
         lat: Number(lat),
