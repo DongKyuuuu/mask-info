@@ -7,13 +7,13 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: () => import('@/views/Home/index.vue')
-  },
-  {
-    path: '/location',
-    name: 'location',
     component: () => import('@/views/Location/index.vue')
   }
+  // {
+  //   path: '/location',
+  //   name: 'location',
+  //   component: () => import('@/views/Location/index.vue')
+  // }
 ];
 
 const router = new VueRouter({

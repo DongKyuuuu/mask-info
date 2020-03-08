@@ -1,0 +1,10 @@
+.output {
+  margin: auto;
+  margin-top: 30px;
+  width: 35vw;
+}
+
+.output-item {
+  border: 1px solid #c4c4c4;
+  padding: 5px;
+}

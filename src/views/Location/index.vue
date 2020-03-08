@@ -1,9 +1,14 @@
 <template>
   <div class="wrap">
-    <div id="map"></div>
-    <div id="mask-ok">
-      abs
+    <div class="sidebar">
+      <div class="menu">
+        <div class="close">뒤로</div>
+        <div class="title">우리동네 마스크</div>
+        <div class="inputForm"><SearchForm /></div>
+        <div class="outputForm"></div>
+      </div>
     </div>
+    <div id="map"></div>
   </div>
 </template>
 

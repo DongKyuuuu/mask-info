@@ -1,0 +1,13 @@
+.inputForm {
+  margin-top: 8vh;
+  display: flex;
+  justify-content: center;
+}
+
+.main-title {
+  width: 100%;
+  text-align: center;
+  margin-top: 20vh;
+  font-size: 56px;
+  font-weight: 550;
+}
