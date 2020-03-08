@@ -2,7 +2,7 @@ export default {
   data() {
     return {
       map: '',
-      test: ''
+      test: false
     };
   },
   methods: {
@@ -21,18 +21,55 @@ export default {
     },
     mapMarker(result) {
       for (let i = 0; i < result.length; i++) {
-        let marker = new kakao.maps.Marker({
+        let content = `
+        <div id="mask-no">
+          <div class="detail">
+          상호 : ${result[i].name}<br/>
+          입고 시간 : ${result[i].stock_t}<br/>
+          입고 수량 : ${result[i].stock_cnt}<br/>
+          판매 수량 : ${result[i].sold_cnt}<br/>
+          재고 수량 : ${result[i].remain_cnt}<br/>
+          </div>
+          <div class="info">
+            재고 없음
+          </div>
+        </div>
+        `;
+        if (result[i].sold_out === false) {
+          content = `
+          <div id="mask-ok">
+          <div class="detail">
+          상호 : ${result[i].name}<br/>
+          입고 시간 : ${result[i].stock_t}<br/>
+          입고 수량 : ${result[i].stock_cnt}<br/>
+          판매 수량 : ${result[i].sold_cnt}<br/>
+          재고 수량 : ${result[i].remain_cnt}<br/>
+          </div>
+          <div class="info">
+            재고 있음
+          </div>
+        </div>
+          `;
+        }
+        const customOverlay = new kakao.maps.CustomOverlay({
           map: this.map,
-          position: new kakao.maps.LatLng(result[i].lat, result[i].lng)
+          position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
+          content: content
         });
-        let info = new kakao.maps.InfoWindow({
-          map: this.map,
-          //   position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
-          disableAutoPan: true,
-          content: 'hi'
-        });
-        info.open(this.map, marker);
       }
+      // for (let i = 0; i < result.length; i++) {
+      //   let marker = new kakao.maps.Marker({
+      //     map: this.map,
+      //     position: new kakao.maps.LatLng(result[i].lat, result[i].lng)
+      //   });
+      //   let info = new kakao.maps.InfoWindow({
+      //     map: this.map,
+      //     //   position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
+      //     disableAutoPan: true,
+      //     content: 'hi'
+      //   });
+      //   info.open(this.map, marker);
+      // }
     }
   },
   computed: {},

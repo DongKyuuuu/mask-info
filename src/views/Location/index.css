@@ -17,3 +17,34 @@
 .search input {
   width: 600px;
 }
+
+#mask-ok {
+  border: 0;
+  background-color: #4e53f2;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#mask-ok .info {
+  text-align: center;
+}
+
+#mask-no {
+  border: 0;
+  background-color: #4e53f2;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#mask-no .detail:hover {
+  color: red;
+  visibility: visible !important;
+}
+#mask-no .detail {
+  /* height: 0; */
+  visibility: hidden;
+}
+#mask-no .info {
+  text-align: center;
+  cursor: pointer;
+}
