@@ -68,8 +68,6 @@ export default {
       const vm = this;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
-          console.log(position);
-          console.log(position.coords.longitude);
           const moveLatLon = new kakao.maps.LatLng(
             position.coords.latitude,
             position.coords.longitude
