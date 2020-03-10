@@ -1,71 +1,41 @@
 .wrap {
   overflow: hidden !important;
 }
+.wrap .sidebarHide {
+  position: absolute;
+  z-index: 200;
+  font-size: 40px;
+  margin-left: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.wrap .sidebarHide:hover {
+  transform: scale(1.1);
+}
 #map {
   width: 100vw;
   height: 100vh;
 }
-#mask-ok {
-  font-size: 12px;
-  width: 60px;
-  height: 15px;
-  text-align: center;
-  border: 0;
-  background-color: #4e53f2;
-  color: #ffffff;
-  padding: 5px;
-  border-radius: 4px;
-}
-
-#mask-ok .info .detail {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  padding: 5px 5px;
-  border-radius: 6px;
-  z-index: 2;
-}
-#mask-ok .info .detail .detail-item {
-  padding: 2px;
-}
-
-#mask-ok:hover .info .detail {
-  visibility: visible;
-}
-
-#mask-no {
-  font-size: 12px;
-  width: 60px;
-  height: 15px;
-  text-align: center;
-  border: 0;
-  background-color: #dc3545;
-  color: #ffffff;
-  padding: 5px;
-  border-radius: 4px;
-}
-
-#mask-no .info .detail {
-  visibility: hidden;
-  width: 140px;
-  background-color: black;
-  color: #fff;
-  text-align: left;
-  padding: 5px 5px;
-  border-radius: 6px;
+.wrap .loading {
+  width: 100vw;
+  height: 100vh;
   position: absolute;
-  z-index: 2;
+  z-index: 999999;
+  font-size: 64px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 49vw;
+  padding-top: 44vh;
 }
-#mask-no .info .detail .detail-item {
-  padding: 2px;
+.sidebar .menu .close {
+  cursor: pointer;
+  width: 10%;
+  font-size: 24px;
+  margin-left: auto;
+  margin-top: 10px;
 }
-
-#mask-no:hover .info .detail {
-  visibility: visible;
+.sidebar .menu .close:hover {
+  transform: scale(1.1);
 }
-
 .sidebar {
   width: 340px;
   height: 100%;
@@ -91,4 +61,99 @@
   display: flex;
   justify-content: center;
   width: 100%;
+}
+
+/* 
+  state color
+*/
+#plenty {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#some {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #ffc107;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#few {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #dc3545;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#empty,
+#null,
+#undefine {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #6c757d;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#plenty .info .detail,
+#some .info .detail,
+#few .info .detail,
+#empty .info .detail,
+#null .info .detail,
+#undefined .info .detail {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  padding: 5px 5px;
+  border-radius: 6px;
+  z-index: 100;
+}
+#plenty .info .detail .detail-item,
+#some .info .detail .detail-item,
+#few .info .detail .detail-item,
+#empty .info .detail .detail-item,
+#null .info .detail .detail-item,
+#undefined .info .detail .detail-item {
+  padding: 2px;
+}
+
+#plenty:hover .info .detail,
+#some:hover .info .detail,
+#few:hover .info .detail,
+#empty:hover .info .detail,
+#null:hover .info .detail,
+#undefiend:hover .info .detail {
+  visibility: visible;
+}
+
+.sidefade-enter,
+.sidefade-leave-to {
+  opacity: 0;
+  width: 0;
+}
+.sidefade-enter-active {
+  transition: all 0.2s;
+}
+.sidefade-leave-active {
+  transition: all 0.2s;
 }

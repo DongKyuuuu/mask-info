@@ -21,6 +21,7 @@ export default {
         const payload = this.q;
         const result = await this.$store.dispatch('search/getAddress', payload);
         this.lists = result.documents;
+        console.log(this.lists);
         if (this.lists.length % this.page.show === 0)
           this.page.total = this.lists.length / this.page.show;
         else

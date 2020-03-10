@@ -1,22 +1,32 @@
 import SearchForm from '@/components/search/index.vue';
 import OutputForm from '@/components/output/index.vue';
+import NotiModal from '@/components/modal/notice/index.vue';
 
 export default {
   components: {
     SearchForm,
-    OutputForm
+    OutputForm,
+    NotiModal
   },
   data() {
     return {
-      map: ''
+      map: '',
+      modal: {
+        show: true
+      },
+      load: false,
+      showSidebar: true
     };
   },
   methods: {
     changeGeo(val) {
-      console.log(val.lat);
-      console.log(val.lng);
+      this.load = true;
+      const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
+      this.maskInfo(val.lat, val.lng, 700);
+      this.map.panTo(moveLatLon);
     },
     maskInfo(lat, lng, levelData) {
+      this.load = true;
       const payload = {
         lat: Number(lat),
         lng: Number(lng),
@@ -25,48 +35,44 @@ export default {
       this.$store
         .dispatch('search/getMaskInfo', payload)
         .then(result => {
-          this.mapMarker(result.stores);
+          this.mapMarker(result.stores, result.count);
         })
         .catch(e => {});
     },
-    mapMarker(result) {
-      for (let i = 0; i < result.length; i++) {
-        let content = `
-        <div id="mask-no">
-          <div class="info">
-            재고 없음
-            <div class="detail">
-            <div class="detail-item">상호 : ${result[i].name}</div>
-            <div class="detail-item">입고 시간 : ${result[i].stock_t}</div>
-            <div class="detail-item">입고 수량 : ${result[i].stock_cnt}</div>
-            <div class="detail-item">판매 수량 : ${result[i].sold_cnt}</div>
-            <div class="detail-item">재고 수량 : ${result[i].remain_cnt}</div>
-            </div>
+    mapMarker(result, count) {
+      for (let i = 0; i < count; i++) {
+        let type;
+        let maskText;
+        if (result[i].type === '01') type = '약국';
+        if (result[i].type === '02') type = '우체국';
+        if (result[i].type === '03') type = '농협';
+
+        if (result[i].remain_stat === 'plenty') maskText = '100개 이상';
+        if (result[i].remain_stat === 'some') maskText = '30개 이상';
+        if (result[i].remain_stat === 'few') maskText = '30개 미만';
+        if (result[i].remain_stat === 'empty') maskText = '재고 없음';
+        if (result[i].remain_stat === null) maskText = '미확인';
+        if (result[i].remain_stat === undefined) maskText = '미확인';
+
+        const content = `
+      <div id="${result[i].remain_stat}">
+        <div class="info">
+          ${maskText}
+          <div class="detail">
+          <div class="detail-item">상호 : ${result[i].name}</div>
+          <div class="detail-item">판매처 : ${type}</div>
+          <div class="detail-item">입고 시간 : ${result[i].sold_at}</div>
+          <div class="detail-item">재고 상태 : ${maskText}</div>
           </div>
         </div>
-        `;
-        if (!result[i].sold_out) {
-          content = `
-          <div id="mask-ok">
-          <div class="info">
-            재고 있음
-            <div class="detail">
-            <div class="detail-item">상호 : ${result[i].name}</div>
-            <div class="detail-item">입고 시간 : ${result[i].stock_t}</div>
-            <div class="detail-item">입고 수량 : ${result[i].stock_cnt}</div>
-            <div class="detail-item">판매 수량 : ${result[i].sold_cnt}</div>
-            <div class="detail-item">재고 수량 : ${result[i].remain_cnt}</div>
-            </div>
-          </div>
-        </div>
-          `;
-        }
+      </div>`;
         const customOverlay = new kakao.maps.CustomOverlay({
           map: this.map,
           position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
           content: content
         });
       }
+      this.load = false;
     },
     async geoInfo() {
       const vm = this;
@@ -77,6 +83,7 @@ export default {
             position.coords.longitude
           );
           vm.map.setCenter(moveLatLon);
+          vm.maskInfo(position.coords.latitude, position.coords.longitude, 700);
         });
       } else {
         alert('위치정보를 불러올 수 없습니다.');
@@ -92,6 +99,7 @@ export default {
       center: new kakao.maps.LatLng(37.498151, 127.027575), //지도의 중심좌표.
       level: 1
     };
+    this.maskInfo(37.498151, 127.027575, 700);
     this.map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
     this.map.setMaxLevel(3); // 최대 축소영역 설정
     this.map.setMinLevel(1); // 최소 축소영역 설정

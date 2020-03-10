@@ -18,7 +18,7 @@
         v-else
         class="list-item"
         v-for="list in showList"
-        :key="list.place_name"
+        :key="list.id"
         @click="changeCenter(list.x, list.y)"
       >
         {{ list.place_name }}
