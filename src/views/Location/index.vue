@@ -17,7 +17,12 @@
           <div class="inputForm">
             <search-form @list="val => changeGeo(val)" />
           </div>
-          <div class="footer"></div>
+          <div class="footer">
+            <div class="introduce">
+            <p>Developer : DongKyu</p>
+            <p>Contact : <a href="mailTo:admin@maskfind.com"> admin@maskfind.com </a> </p>
+          </div>
+          </div>
         </div>
       </div>
     </transition>
