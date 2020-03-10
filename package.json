@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve --port 9090",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "deploy": "yarn build && aws s3 sync ./dist s3://maskfind.com"
   },
   "dependencies": {
     "axios": "^0.19.2",
