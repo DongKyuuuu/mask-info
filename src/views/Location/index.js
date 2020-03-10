@@ -22,8 +22,19 @@ export default {
     changeGeo(val) {
       this.load = true;
       const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
-      this.maskInfo(val.lat, val.lng, 700);
+      let levelData;
+      const level = this.map.getLevel();
+      if (level === 1) levelData = 300;
+      if (level === 2) levelData = 500;
+      if (level === 3) levelData = 700;
+      if (level === 4) levelData = 1500;
+      if (level === 5) levelData = 3000;
+      if (level === 6) levelData = 5000;
+      this.maskInfo(val.lat, val.lng, levelData);
       this.map.panTo(moveLatLon);
+      if(window.matchMedia("(max-width: 414px)")){
+        this.showSidebar = false;
+      }
     },
     maskInfo(lat, lng, levelData) {
       this.load = true;
@@ -97,11 +108,11 @@ export default {
     let options = {
       //37.484647, 126.895023
       center: new kakao.maps.LatLng(37.498151, 127.027575), //지도의 중심좌표.
-      level: 1
+      level: 3
     };
     this.maskInfo(37.498151, 127.027575, 700);
     this.map = new kakao.maps.Map(container, options); //지도 생성 및 객체 리턴
-    this.map.setMaxLevel(3); // 최대 축소영역 설정
+    this.map.setMaxLevel(6); // 최대 축소영역 설정
     this.map.setMinLevel(1); // 최소 축소영역 설정
 
     this.geoInfo();
@@ -113,6 +124,9 @@ export default {
       if (level === 1) levelData = 300;
       if (level === 2) levelData = 500;
       if (level === 3) levelData = 700;
+      if (level === 4) levelData = 1500;
+      if (level === 5) levelData = 3000;
+      if (level === 6) levelData = 5000;
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
   }
