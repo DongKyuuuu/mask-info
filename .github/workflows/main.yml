@@ -1,0 +1,37 @@
+name: CI
+
+on:
+  push:
+    branches: 
+      - master
+
+jobs:
+  build_production:
+    if: github.ref == 'refs/heads/master'
+    runs-on: ubuntu-latest
+    
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install dependencies
+      run: yarn
+
+    - name: Build Vue Project
+      env:
+        NODE_ENV: production
+      run: export NODE_ENV=production && yarn build
+    
+    - name: Deploy to S3
+      env:
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+      run:
+        aws s3 sync ./dist s3://maskfind.com
+        
+    - uses: awact/cloudfront-action@master
+      env:
+        SOURCE_DIR: '*'
+        AWS_REGION: 'ap-northeast-2'
+        AWS_ACCESS_KEY_ID: ${{secrets.AWS_ACCESS_KEY_ID}}
+        AWS_SECRET_ACCESS_KEY: ${{secrets.AWS_SECRET_ACCESS_KEY}}
+        DISTRIBUTION_ID: E33RM730UTESJF
