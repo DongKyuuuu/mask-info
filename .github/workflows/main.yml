@@ -22,7 +22,7 @@ jobs:
         run: export NODE_ENV=production && yarn build
 
       - name: Copy Robots.txt
-        run: copy ./src/robots.txt dist/
+        run: cp ./src/robots.txt dist/
 
       - name: Deploy to S3
         env:
