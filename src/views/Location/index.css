@@ -1,0 +1,183 @@
+a{
+  text-decoration: none;
+  color: #fff;
+}
+a:hover{
+  color: beige;
+}
+.wrap {
+  overflow: hidden !important;
+}
+.wrap .sidebarHide {
+  position: absolute;
+  z-index: 200;
+  font-size: 40px;
+  margin-left: 20px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+.wrap .sidebarHide:hover {
+  transform: scale(1.1);
+}
+#map {
+  width: 100vw;
+  height: 100vh;
+}
+.wrap .loading {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 999999;
+  font-size: 64px;
+  background-color: rgba(0, 0, 0, 0.3);
+  padding-left: 49vw;
+  padding-top: 44vh;
+}
+.sidebar .menu .close {
+  cursor: pointer;
+  width: 10%;
+  font-size: 24px;
+  margin-left: auto;
+  margin-top: 10px;
+}
+.sidebar .menu .close:hover {
+  transform: scale(1.1);
+}
+.sidebar {
+  width: 340px;
+  height: 100%;
+
+  display: flex;
+  position: absolute;
+  z-index: 3;
+  background-color: rgba(78, 83, 242, 0.9);
+}
+.sidebar .menu {
+  width: 100%;
+  color: #fff;
+}
+.sidebar .menu .title {
+  margin-top: 35px;
+  margin-bottom: 30px;
+  width: 100%;
+  text-align: center;
+  font-size: 24px;
+  font-weight: 550;
+}
+.sidebar .menu .inputForm {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+}
+.sidebar .footer{
+  margin-top: 30px;
+}
+.sidebar .footer .introduce{
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  font-weight: 550;
+  text-align: left;
+  padding-left: 35px;
+}
+/* 
+  state color
+*/
+#plenty {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #28a745;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#some {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #ffc107;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#few {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #dc3545;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+#empty,
+#null,
+#undefine {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #6c757d;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
+
+#plenty .info .detail,
+#some .info .detail,
+#few .info .detail,
+#empty .info .detail,
+#null .info .detail,
+#undefined .info .detail {
+  visibility: hidden;
+  width: 200px;
+  background-color: black;
+  color: #fff;
+  text-align: left;
+  padding: 5px 5px;
+  border-radius: 6px;
+  z-index: 100;
+}
+#plenty .info .detail .detail-item,
+#some .info .detail .detail-item,
+#few .info .detail .detail-item,
+#empty .info .detail .detail-item,
+#null .info .detail .detail-item,
+#undefined .info .detail .detail-item {
+  padding: 2px;
+}
+
+#plenty:hover .info .detail,
+#some:hover .info .detail,
+#few:hover .info .detail,
+#empty:hover .info .detail,
+#null:hover .info .detail,
+#undefiend:hover .info .detail {
+  visibility: visible;
+}
+
+.sidefade-enter,
+.sidefade-leave-to {
+  opacity: 0;
+  width: 0;
+}
+.sidefade-enter-active {
+  transition: all 0.2s;
+}
+.sidefade-leave-active {
+  transition: all 0.2s;
+}
+
+@media screen and (max-width: 414px){
+  .sidebar{
+    width: 100vw;
+    height: 100vh;
+  }
+}

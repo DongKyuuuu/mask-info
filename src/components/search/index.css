@@ -1,0 +1,65 @@
+.search-wrap {
+  width: 265px;
+}
+.search {
+  width: 100%;
+  height: 50px;
+  display: flex;
+  background-color: #fff;
+  border-radius: 20px;
+}
+.search:hover .fa-search {
+  color: #dc3545;
+}
+.search input {
+  width: 80%;
+  font-size: 18px;
+  padding: 10px 10px;
+  border: 0;
+  border-radius: 20px;
+}
+.search input:focus {
+  outline: none;
+}
+.fa-search {
+  padding-top: 12px;
+  justify-self: center;
+  color: #ccc;
+  font-size: 24px;
+  cursor: pointer;
+}
+#divLine {
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border: 2px solid #fff;
+  border-radius: 20px;
+}
+.addrResult {
+  height: 300px;
+}
+.addrResult .list-item {
+  padding: 8px;
+  cursor: pointer;
+}
+.addrResult .list-item:hover {
+  font-weight: 600;
+  font-size: 18px;
+}
+.pageNation {
+  display: flex;
+  justify-content: center;
+  font-size: 32px;
+  font-weight: 550;
+}
+.pageNation .beforePage {
+  margin-right: 150px;
+  cursor: pointer;
+}
+.pageNation .afterPage {
+  cursor: pointer;
+}
+
+.pageNation .beforePage:hover,
+.pageNation .afterPage:hover {
+  color: #dc3545;
+}
