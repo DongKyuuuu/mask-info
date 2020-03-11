@@ -3,6 +3,7 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 
+app.use('/robots.txt', express.static(path.join(__dirname, 'dist/static/robots.txt')));
 Vue.config.productionTip = false
 
 new Vue({
