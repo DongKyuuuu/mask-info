@@ -8,7 +8,7 @@
           </div>
 
           <div class="modal-body">
-            <div class="noti1" v-if="!noticeNext">
+            <div class="noti1">
               <p> <b>공적 마스크 재고 알림 서비스</b> 입니다. </p>
             <p>베타테스트 서비스 기간 입니다.( ~2020-03-15)</p>
             <p>정식 서비스 오픈은 2020-03-11(수) 오전 8시 입니다.</p>
