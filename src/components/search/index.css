@@ -29,8 +29,8 @@
   cursor: pointer;
 }
 #divLine {
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 15px;
+  margin-bottom: 10px;
   border: 2px solid #fff;
   border-radius: 20px;
 }
@@ -54,6 +54,7 @@
 .pageNation .beforePage {
   margin-right: 150px;
   cursor: pointer;
+  transition: all 0.2s;
 }
 .pageNation .afterPage {
   cursor: pointer;
@@ -62,4 +63,5 @@
 .pageNation .beforePage:hover,
 .pageNation .afterPage:hover {
   color: #dc3545;
+  transition: all 0.2s;
 }
