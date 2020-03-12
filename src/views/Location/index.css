@@ -1,8 +1,8 @@
-a{
+a {
   text-decoration: none;
   color: #fff;
 }
-a:hover{
+a:hover {
   color: beige;
 }
 .wrap {
@@ -33,6 +33,19 @@ a:hover{
   padding-left: 49vw;
   padding-top: 44vh;
 }
+.locateNow {
+  position: absolute;
+  width: 20px;
+  margin-left: 96vw;
+  margin-top: 16px;
+  z-index: 3;
+  color: #fff;
+  background-color: rgba(78, 83, 242, 1);
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 550;
+  font-size: 24px;
+}
 .sidebar .menu .close {
   cursor: pointer;
   width: 10%;
@@ -49,7 +62,7 @@ a:hover{
 
   display: flex;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   background-color: rgba(78, 83, 242, 0.9);
 }
 .sidebar .menu {
@@ -69,10 +82,10 @@ a:hover{
   justify-content: center;
   width: 100%;
 }
-.sidebar .footer{
+.sidebar .footer {
   margin-top: 30px;
 }
-.sidebar .footer .introduce{
+.sidebar .footer .introduce {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -175,9 +188,14 @@ a:hover{
   transition: all 0.2s;
 }
 
-@media screen and (max-width: 414px){
-  .sidebar{
+@media screen and (max-width: 414px) {
+  .sidebar {
     width: 100vw;
     height: 100vh;
+  }
+  .locateNow {
+    right: 0;
+    margin-right: 8px;
+    margin-top: 10px;
   }
 }

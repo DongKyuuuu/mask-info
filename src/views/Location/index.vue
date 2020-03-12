@@ -3,9 +3,14 @@
     <div class="loading" v-if="load">
       <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <noti-modal @close="modal.show = false" v-if="modal.show" />
-    <div class="sidebarHide" @click="showSidebar = true" v-if="!showSidebar">
-      <i class="fas fa-bars"></i>
+    <div>
+      <noti-modal @close="modal.show = false" v-if="modal.show" />
+      <div class="sidebarHide" @click="showSidebar = true" v-if="!showSidebar">
+        <i class="fas fa-bars"></i>
+      </div>
+      <div class="locateNow" v-if="!showSidebar" @click="geoInfo()">
+        <i class="fas fa-map-marker-alt"></i>
+      </div>
     </div>
     <transition name="sidefade">
       <div class="sidebar" v-if="showSidebar">
@@ -19,9 +24,12 @@
           </div>
           <div class="footer">
             <div class="introduce">
-            <p>Developer : DongKyu</p>
-            <p>Contact : <a href="mailTo:admin@maskfind.com"> admin@maskfind.com </a> </p>
-          </div>
+              <p>Developer : DongKyu</p>
+              <p>
+                Contact :
+                <a href="mailTo:admin@maskfind.com"> admin@maskfind.com </a>
+              </p>
+            </div>
           </div>
         </div>
       </div>

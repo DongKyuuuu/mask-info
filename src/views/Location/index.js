@@ -19,22 +19,23 @@ export default {
     };
   },
   methods: {
-    changeGeo(val) {
-      this.load = true;
-      const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
-      let levelData;
+    getMapLevel() {
       const level = this.map.getLevel();
+      let levelData;
       if (level === 1) levelData = 300;
       if (level === 2) levelData = 500;
       if (level === 3) levelData = 700;
       if (level === 4) levelData = 1500;
       if (level === 5) levelData = 3000;
       if (level === 6) levelData = 5000;
-      this.maskInfo(val.lat, val.lng, levelData);
+      return levelData;
+    },
+    changeGeo(val) {
+      this.load = true;
+      const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
+      this.maskInfo(val.lat, val.lng, this.getMapLevel());
       this.map.panTo(moveLatLon);
-      if(window.matchMedia("(max-width: 414px)")){
-        this.showSidebar = false;
-      }
+      this.showSidebar = false;
     },
     maskInfo(lat, lng, levelData) {
       this.load = true;
@@ -94,7 +95,11 @@ export default {
             position.coords.longitude
           );
           vm.map.setCenter(moveLatLon);
-          vm.maskInfo(position.coords.latitude, position.coords.longitude, 700);
+          vm.maskInfo(
+            position.coords.latitude,
+            position.coords.longitude,
+            vm.getMapLevel()
+          );
         });
       } else {
         alert('위치정보를 불러올 수 없습니다.');
