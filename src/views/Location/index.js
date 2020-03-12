@@ -25,10 +25,18 @@ export default {
         lat: 37.498151,
         lng: 127.027575
       },
-      refreshList: 0
+      refreshList: 0,
+      noShow: false,
+      markerLocate: []
     };
   },
   methods: {
+    showControl() {
+      this.noShow = !this.noShow;
+      for (let i = 0; i < this.markerLocate.length; i++) {
+        this.markerLocate[i].setMap(null);
+      }
+    },
     changeMenu(select) {
       this.showGeo = false;
       this.showList = false;
@@ -71,6 +79,17 @@ export default {
     },
     mapMarker(result, count) {
       for (let i = 0; i < count; i++) {
+        let check = false;
+        let empty = false;
+        if (this.noShow) {
+          if (result[i].remain_stat === null) check = true;
+          if (result[i].remain_stat === undefined) check = true;
+          if (result[i].remain_stat === 'empty') check = true;
+        } else {
+          if (result[i].remain_stat === null) empty = true;
+          if (result[i].remain_stat === undefined) empty = true;
+          if (result[i].remain_stat === 'empty') empty = true;
+        }
         let type;
         let maskText;
         if (result[i].type === '01') type = '약국';
@@ -96,11 +115,15 @@ export default {
           </div>
         </div>
       </div>`;
-        const customOverlay = new kakao.maps.CustomOverlay({
-          map: this.map,
-          position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
-          content: content
-        });
+        if (check) {
+        } else {
+          let overLay = new kakao.maps.CustomOverlay({
+            map: this.map,
+            position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
+            content: content
+          });
+          if (empty) this.markerLocate.push(overLay);
+        }
       }
       this.load = false;
     },

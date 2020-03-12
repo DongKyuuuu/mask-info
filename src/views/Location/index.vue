@@ -3,13 +3,24 @@
     <div class="loading" v-if="load">
       <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <div>
-      <noti-modal @close="modal.show = false" v-if="modal.show" />
-      <div class="sidebarHide" @click="showSidebar = true" v-if="!showSidebar">
-        <i class="fas fa-bars"></i>
+    <noti-modal @close="modal.show = false" v-if="modal.show" />
+    <div class="map-top">
+      <div class="map-top-left">
+        <div
+          class="sidebarHide"
+          @click="showSidebar = true"
+          v-if="!showSidebar"
+        >
+          <i class="fas fa-bars"></i>
+        </div>
       </div>
-      <div class="locateNow" @click="geoInfo()">
-        <i class="fas fa-map-marker-alt"></i>
+      <div class="map-top-right">
+        <div class="showIcon" @click="showControl">
+          <i class="fas fa-eye-slash"> </i>
+        </div>
+        <div class="locateNow" @click="geoInfo()">
+          <i class="fas fa-map-marker-alt"></i>
+        </div>
       </div>
     </div>
     <transition name="sidefade">
@@ -24,7 +35,7 @@
               <span> 지도 검색 </span>
             </div>
             <div class="listItem" @click="changeMenu('showList')">
-              <span> 목록 확인 </span>
+              <span> 목록 보기 </span>
             </div>
             <!-- <div class="listItem" @click="changeMenu('showNews')">
               <span> 관련 소식 </span>
