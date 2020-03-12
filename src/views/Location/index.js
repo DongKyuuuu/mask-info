@@ -18,13 +18,14 @@ export default {
       },
       load: false,
       showSidebar: true,
-      showGeo: false,
-      showList: true,
+      showGeo: true,
+      showList: false,
       showNews: false,
       nowCenter: {
         lat: 37.498151,
         lng: 127.027575
-      }
+      },
+      refreshList: 0
     };
   },
   methods: {
@@ -52,7 +53,7 @@ export default {
       const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
       this.maskInfo(val.lat, val.lng, this.getMapLevel());
       this.map.panTo(moveLatLon);
-      this.showSidebar = false;
+      if (document.body.offsetWidth <= 414) this.showSidebar = false;
     },
     maskInfo(lat, lng, levelData) {
       this.load = true;
@@ -142,7 +143,6 @@ export default {
     this.map.setMinLevel(1); // 최소 축소영역 설정
 
     this.geoInfo();
-
     kakao.maps.event.addListener(this.map, 'dragend', function() {
       let data = vm.map.getCenter();
       let level = vm.map.getLevel();
@@ -153,8 +153,11 @@ export default {
       if (level === 4) levelData = 1500;
       if (level === 5) levelData = 3000;
       if (level === 6) levelData = 5000;
+
       vm.nowCenter.lat = data.Ha;
       vm.nowCenter.lng = data.Ga;
+      vm.refreshList += 1;
+
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
   }

@@ -45,6 +45,7 @@ a:hover {
   border-radius: 10px;
   font-weight: 550;
   font-size: 24px;
+  cursor: pointer;
 }
 .sidebar .menuList {
   display: flex;
@@ -54,13 +55,14 @@ a:hover {
 .sidebar .menuList .listItem {
   padding-left: 8px;
   padding-right: 8px;
-
+  height: 30px;
   justify-self: center;
   cursor: pointer;
 }
 .sidebar .menuList .listItem:hover {
   font-size: 18px;
   font-weight: 550;
+  transition: all 0.2s;
 }
 .sidebar .menu .close {
   cursor: pointer;

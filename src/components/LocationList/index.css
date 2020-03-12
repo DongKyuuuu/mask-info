@@ -1,0 +1,65 @@
+hr {
+  border: 2px solid;
+}
+.list-wrap {
+  margin-top: 10px;
+  width: 265px;
+  box-sizing: border-box;
+  display: flex;
+}
+.list-wrap .list {
+  width: 100%;
+  box-sizing: border-box;
+}
+.list-wrap .list .outputList {
+  width: 100%;
+  height: 360px;
+  padding-top: 8px;
+}
+.list-wrap .list .outputList .items .items-wrap {
+  border: 3px solid;
+  padding: 12px;
+  border-radius: 10px;
+  margin-bottom: 18px;
+  cursor: pointer;
+}
+.list-wrap .list .outputList .items .items-wrap:hover {
+  transition: all 0.2s;
+  border: 3px solid;
+}
+.list-wrap .list .outputList .items .items-wrap .items-title #count {
+  font-size: 14px;
+  color: #fff !important;
+}
+.list-wrap .list .outputList .items .few {
+  border: 3px solid #dc3545;
+}
+.list-wrap .list .outputList .items .few .items-title {
+  font-size: 16px;
+  font-weight: 550;
+  padding-bottom: 10px;
+}
+.list-wrap .list .outputList .items .some {
+  border: 3px solid #ffc107;
+}
+.list-wrap .list .outputList .items .some .items-title {
+  font-size: 16px;
+  font-weight: 550;
+  padding-bottom: 10px;
+}
+.list-wrap .list .outputList .items .plenty {
+  border: 3px solid #28a745;
+}
+.list-wrap .list .outputList .items .plenty .items-title {
+  font-size: 16px;
+  font-weight: 550;
+  padding-bottom: 10px;
+}
+
+.list-wrap .list .list-title #title {
+  font-size: 18px;
+  font-weight: 550;
+}
+.list-wrap .list .list-title #sub {
+  font-size: 12px;
+}

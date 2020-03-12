@@ -4,11 +4,11 @@
       <i class="fas fa-spinner fa-spin"></i>
     </div>
     <div>
-      <!-- <noti-modal @close="modal.show = false" v-if="modal.show" /> -->
+      <noti-modal @close="modal.show = false" v-if="modal.show" />
       <div class="sidebarHide" @click="showSidebar = true" v-if="!showSidebar">
         <i class="fas fa-bars"></i>
       </div>
-      <div class="locateNow" v-if="!showSidebar" @click="geoInfo()">
+      <div class="locateNow" @click="geoInfo()">
         <i class="fas fa-map-marker-alt"></i>
       </div>
     </div>
@@ -26,15 +26,19 @@
             <div class="listItem" @click="changeMenu('showList')">
               <span> 목록 확인 </span>
             </div>
-            <div class="listItem" @click="changeMenu('showNews')">
+            <!-- <div class="listItem" @click="changeMenu('showNews')">
               <span> 관련 소식 </span>
-            </div>
+            </div> -->
           </div>
           <div class="inputForm" v-if="showGeo">
             <search-form @list="val => changeGeo(val)" />
           </div>
           <div class="inputForm" v-if="showList">
-            <location-list :location="nowCenter" />
+            <location-list
+              :location="nowCenter"
+              :refreshList="refreshList"
+              @geo="val => changeGeo(val)"
+            />
           </div>
           <div class="inputForm" v-if="showNews">
             뉴스 확인
