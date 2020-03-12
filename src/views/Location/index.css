@@ -1,23 +1,48 @@
-a{
+a {
   text-decoration: none;
   color: #fff;
 }
-a:hover{
+a:hover {
   color: beige;
 }
 .wrap {
   overflow: hidden !important;
 }
-.wrap .sidebarHide {
+.wrap .map-top {
   position: absolute;
-  z-index: 200;
-  font-size: 40px;
-  margin-left: 20px;
-  margin-top: 10px;
-  cursor: pointer;
+  z-index: 3;
+  display: flex;
+  width: 100%;
+  margin-top: 8px;
 }
-.wrap .sidebarHide:hover {
+.wrap .map-top-right {
+  display: flex;
+  margin-left: auto;
+}
+.wrap .map-top-left {
+  display: flex;
+}
+.locateNow,
+.showIcon,
+.sidebarHide {
+  width: 25px;
+  height: 25px;
+  text-align: center;
+  color: #fff;
+  background-color: rgba(78, 83, 242, 1);
+  padding: 10px;
+  border-radius: 10px;
+  font-weight: 550;
+  font-size: 24px;
+  cursor: pointer;
+  margin-right: 8px;
+  margin-left: 8px;
+}
+.locateNow:hover,
+.showIcon:hover,
+.sidebarHide:hover {
   transform: scale(1.1);
+  transition: all 0.2s;
 }
 #map {
   width: 100vw;
@@ -32,6 +57,23 @@ a:hover{
   background-color: rgba(0, 0, 0, 0.3);
   padding-left: 49vw;
   padding-top: 44vh;
+}
+.sidebar .menuList {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.sidebar .menuList .listItem {
+  padding-left: 8px;
+  padding-right: 8px;
+  height: 30px;
+  justify-self: center;
+  cursor: pointer;
+}
+.sidebar .menuList .listItem:hover {
+  font-size: 18px;
+  font-weight: 550;
+  transition: all 0.2s;
 }
 .sidebar .menu .close {
   cursor: pointer;
@@ -49,7 +91,7 @@ a:hover{
 
   display: flex;
   position: absolute;
-  z-index: 3;
+  z-index: 4;
   background-color: rgba(78, 83, 242, 0.9);
 }
 .sidebar .menu {
@@ -69,10 +111,10 @@ a:hover{
   justify-content: center;
   width: 100%;
 }
-.sidebar .footer{
-  margin-top: 30px;
+.sidebar .footer {
+  margin-top: 20px;
 }
-.sidebar .footer .introduce{
+.sidebar .footer .introduce {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -175,8 +217,8 @@ a:hover{
   transition: all 0.2s;
 }
 
-@media screen and (max-width: 414px){
-  .sidebar{
+@media screen and (max-width: 414px) {
+  .sidebar {
     width: 100vw;
     height: 100vh;
   }
