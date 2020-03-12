@@ -1,12 +1,14 @@
 import SearchForm from '@/components/search/index.vue';
 import OutputForm from '@/components/output/index.vue';
 import NotiModal from '@/components/modal/notice/index.vue';
+import LocationList from '@/components/LocationList/index.vue';
 
 export default {
   components: {
     SearchForm,
     OutputForm,
-    NotiModal
+    NotiModal,
+    LocationList
   },
   data() {
     return {
@@ -15,10 +17,25 @@ export default {
         show: true
       },
       load: false,
-      showSidebar: true
+      showSidebar: true,
+      showGeo: false,
+      showList: true,
+      showNews: false,
+      nowCenter: {
+        lat: 37.498151,
+        lng: 127.027575
+      }
     };
   },
   methods: {
+    changeMenu(select) {
+      this.showGeo = false;
+      this.showList = false;
+      this.showNews = false;
+      select === 'showGeo' ? (this.showGeo = true) : 0;
+      select === 'showList' ? (this.showList = true) : 0;
+      select === 'showNews' ? (this.showNews = true) : 0;
+    },
     getMapLevel() {
       const level = this.map.getLevel();
       let levelData;
@@ -94,6 +111,8 @@ export default {
             position.coords.latitude,
             position.coords.longitude
           );
+          vm.nowCenter.lat = position.coords.latitude;
+          vm.nowCenter.lng = position.coords.longitude;
           vm.map.setCenter(moveLatLon);
           vm.maskInfo(
             position.coords.latitude,
@@ -132,6 +151,8 @@ export default {
       if (level === 4) levelData = 1500;
       if (level === 5) levelData = 3000;
       if (level === 6) levelData = 5000;
+      vm.nowCenter.lat = data.Ha;
+      vm.nowCenter.lng = data.Ga;
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
   }

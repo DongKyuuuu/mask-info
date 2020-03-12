@@ -4,7 +4,7 @@
       <i class="fas fa-spinner fa-spin"></i>
     </div>
     <div>
-      <noti-modal @close="modal.show = false" v-if="modal.show" />
+      <!-- <noti-modal @close="modal.show = false" v-if="modal.show" /> -->
       <div class="sidebarHide" @click="showSidebar = true" v-if="!showSidebar">
         <i class="fas fa-bars"></i>
       </div>
@@ -19,8 +19,25 @@
             <i class="fas fa-bars"></i>
           </div>
           <div class="title">우리동네 마스크</div>
-          <div class="inputForm">
+          <div class="menuList">
+            <div class="listItem" @click="changeMenu('showGeo')">
+              <span> 지도 검색 </span>
+            </div>
+            <div class="listItem" @click="changeMenu('showList')">
+              <span> 목록 확인 </span>
+            </div>
+            <div class="listItem" @click="changeMenu('showNews')">
+              <span> 관련 소식 </span>
+            </div>
+          </div>
+          <div class="inputForm" v-if="showGeo">
             <search-form @list="val => changeGeo(val)" />
+          </div>
+          <div class="inputForm" v-if="showList">
+            <location-list :location="nowCenter" />
+          </div>
+          <div class="inputForm" v-if="showNews">
+            뉴스 확인
           </div>
           <div class="footer">
             <div class="introduce">

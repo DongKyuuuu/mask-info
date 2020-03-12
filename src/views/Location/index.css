@@ -46,6 +46,22 @@ a:hover {
   font-weight: 550;
   font-size: 24px;
 }
+.sidebar .menuList {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.sidebar .menuList .listItem {
+  padding-left: 8px;
+  padding-right: 8px;
+
+  justify-self: center;
+  cursor: pointer;
+}
+.sidebar .menuList .listItem:hover {
+  font-size: 18px;
+  font-weight: 550;
+}
 .sidebar .menu .close {
   cursor: pointer;
   width: 10%;
@@ -83,7 +99,7 @@ a:hover {
   width: 100%;
 }
 .sidebar .footer {
-  margin-top: 30px;
+  margin-top: 20px;
 }
 .sidebar .footer .introduce {
   display: flex;
