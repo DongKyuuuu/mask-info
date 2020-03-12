@@ -90,7 +90,7 @@ export default {
           <div class="detail">
           <div class="detail-item">상호 : ${result[i].name}</div>
           <div class="detail-item">판매처 : ${type}</div>
-          <div class="detail-item">입고 시간 : ${result[i].sold_at}</div>
+          <div class="detail-item">입고 시간 : ${result[i].stock_at}</div>
           <div class="detail-item">재고 상태 : ${maskText}</div>
           </div>
         </div>
@@ -105,6 +105,7 @@ export default {
     },
     async geoInfo() {
       const vm = this;
+      this.load = true;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
           const moveLatLon = new kakao.maps.LatLng(
@@ -120,6 +121,7 @@ export default {
             vm.getMapLevel()
           );
         });
+        this.load = false;
       } else {
         alert('위치정보를 불러올 수 없습니다.');
       }
