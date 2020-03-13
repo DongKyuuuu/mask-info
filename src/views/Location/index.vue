@@ -3,7 +3,7 @@
     <div class="loading" v-if="load">
       <i class="fas fa-spinner fa-spin"></i>
     </div>
-    <noti-modal @close="modal.show = false" v-if="modal.show" />
+    <noti-modal v-if="$store.state.check.show" />
     <div class="map-top">
       <div class="map-top-left">
         <div
