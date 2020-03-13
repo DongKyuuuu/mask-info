@@ -25,7 +25,10 @@ export default {
           const saveDate = state.date;
           const nowDate = moment(new Date()).format('YYYY-MM-DD');
 
-          const duration = moment.duration(nowDate.diff(saveDate));
+          let gte = moment(saveDate);
+          let lte = moment(nowDate);
+
+          const duration = moment.duration(lte.diff(gte));
           if (duration.asDays() >= 1) {
             commit('updateDate', '');
             commit('updateShow', true);
