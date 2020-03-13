@@ -32,7 +32,7 @@ export default {
       if (level === 6) levelData = 5000;
       this.maskInfo(val.lat, val.lng, levelData);
       this.map.panTo(moveLatLon);
-      if(window.matchMedia("(max-width: 414px)")){
+      if (window.matchMedia('(max-width: 414px)')) {
         this.showSidebar = false;
       }
     },
@@ -64,7 +64,9 @@ export default {
         if (result[i].remain_stat === 'empty') maskText = '재고 없음';
         if (result[i].remain_stat === null) maskText = '미확인';
         if (result[i].remain_stat === undefined) maskText = '미확인';
+        if (result[i].remain_stat === 'break') maskText = '판매중지';
 
+        console.log(result[i]);
         const content = `
       <div id="${result[i].remain_stat}">
         <div class="info">

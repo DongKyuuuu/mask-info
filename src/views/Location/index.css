@@ -1,8 +1,8 @@
-a{
+a {
   text-decoration: none;
   color: #fff;
 }
-a:hover{
+a:hover {
   color: beige;
 }
 .wrap {
@@ -69,10 +69,10 @@ a:hover{
   justify-content: center;
   width: 100%;
 }
-.sidebar .footer{
+.sidebar .footer {
   margin-top: 30px;
 }
-.sidebar .footer .introduce{
+.sidebar .footer .introduce {
   display: flex;
   justify-content: center;
   flex-direction: column;
@@ -129,13 +129,25 @@ a:hover{
   padding: 5px;
   border-radius: 4px;
 }
+#break {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
 
 #plenty .info .detail,
 #some .info .detail,
 #few .info .detail,
 #empty .info .detail,
 #null .info .detail,
-#undefined .info .detail {
+#undefined .info .detail,
+#break .info .detail {
   visibility: hidden;
   width: 200px;
   background-color: black;
@@ -150,7 +162,8 @@ a:hover{
 #few .info .detail .detail-item,
 #empty .info .detail .detail-item,
 #null .info .detail .detail-item,
-#undefined .info .detail .detail-item {
+#undefined .info .detail .detail-item,
+#break .info .detail .detail-item {
   padding: 2px;
 }
 
@@ -159,7 +172,8 @@ a:hover{
 #few:hover .info .detail,
 #empty:hover .info .detail,
 #null:hover .info .detail,
-#undefiend:hover .info .detail {
+#undefiend:hover .info .detail,
+#break:hover .info .detail {
   visibility: visible;
 }
 
@@ -175,8 +189,8 @@ a:hover{
   transition: all 0.2s;
 }
 
-@media screen and (max-width: 414px){
-  .sidebar{
+@media screen and (max-width: 414px) {
+  .sidebar {
     width: 100vw;
     height: 100vh;
   }
