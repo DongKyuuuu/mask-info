@@ -17,7 +17,7 @@
       <div
         v-else
         class="list-item"
-        v-for="list in showList"
+        v-for="list in lists"
         :key="list.id"
         @click="changeCenter(list.x, list.y)"
       >
@@ -25,14 +25,6 @@
       </div>
     </div>
     <hr id="divLine" />
-    <div class="pageNation" v-if="page.total > 1">
-      <div class="beforePage" @click="page.per -= 1">
-        <
-      </div>
-      <div class="afterPage" @click="page.per += 1">
-        >
-      </div>
-    </div>
   </div>
 </template>
 
