@@ -238,7 +238,7 @@ export default {
       {
         name: 'keywords',
         content:
-          '공공마스크, 마스크, 마스크 재고, 코로나, 코로나19, 코로나 마스크, 마스크 위치, 마스크 가격, 마스크 정보, 마스크 위치, 서울 마스크, 대전 마스크, 부산 마스크, 우리동네 마스크'
+          '공공마스크, 마스크, 마스크 재고, 코로나, 코로나19, 코로나 마스크, 마스크 위치, 마스크 가격, 마스크 정보, 마스크 위치, 서울 마스크, 대전 마스크, 부산 마스크, 우리동네 마스크,동네 마스크'
       },
       { name: 'author', content: 'Dongkyu' },
       // SNS 설정
@@ -250,6 +250,7 @@ export default {
       },
       // 모바일 최적화
       { name: 'viewport', content: 'width=device-width, initial-scale=1' }
-    ]
+    ],
+    link: [{ rel: 'favicon', href: '/favicon.ico' }]
   }
 };
