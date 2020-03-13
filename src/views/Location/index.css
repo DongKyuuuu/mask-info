@@ -171,13 +171,25 @@ a:hover {
   padding: 5px;
   border-radius: 4px;
 }
+#break {
+  font-size: 12px;
+  width: 60px;
+  height: 15px;
+  text-align: center;
+  border: 0;
+  background-color: #000;
+  color: #ffffff;
+  padding: 5px;
+  border-radius: 4px;
+}
 
 #plenty .info .detail,
 #some .info .detail,
 #few .info .detail,
 #empty .info .detail,
 #null .info .detail,
-#undefined .info .detail {
+#undefined .info .detail,
+#break .info .detail {
   visibility: hidden;
   width: 200px;
   background-color: black;
@@ -192,7 +204,8 @@ a:hover {
 #few .info .detail .detail-item,
 #empty .info .detail .detail-item,
 #null .info .detail .detail-item,
-#undefined .info .detail .detail-item {
+#undefined .info .detail .detail-item,
+#break .info .detail .detail-item {
   padding: 2px;
 }
 
@@ -201,7 +214,8 @@ a:hover {
 #few:hover .info .detail,
 #empty:hover .info .detail,
 #null:hover .info .detail,
-#undefiend:hover .info .detail {
+#undefiend:hover .info .detail,
+#break:hover .info .detail {
   visibility: visible;
 }
 

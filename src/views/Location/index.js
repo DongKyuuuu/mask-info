@@ -85,10 +85,12 @@ export default {
           if (result[i].remain_stat === null) check = true;
           if (result[i].remain_stat === undefined) check = true;
           if (result[i].remain_stat === 'empty') check = true;
+          if (result[i].remain_stat === 'break') check = true;
         } else {
           if (result[i].remain_stat === null) empty = true;
           if (result[i].remain_stat === undefined) empty = true;
           if (result[i].remain_stat === 'empty') empty = true;
+          if (result[i].remain_stat === 'break') empty = true;
         }
         let type;
         let maskText;
@@ -102,7 +104,9 @@ export default {
         if (result[i].remain_stat === 'empty') maskText = '재고 없음';
         if (result[i].remain_stat === null) maskText = '미확인';
         if (result[i].remain_stat === undefined) maskText = '미확인';
+        if (result[i].remain_stat === 'break') maskText = '판매중지';
 
+        console.log(result[i]);
         const content = `
       <div id="${result[i].remain_stat}">
         <div class="info">
