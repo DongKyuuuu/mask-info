@@ -27,3 +27,9 @@
 - 재고 없는 곳 표시안함 버튼 추가
 - 아이콘 수
   <img width="2032" alt="스크린샷 2020-03-13 오전 2 06 52" src="https://user-images.githubusercontent.com/16554536/76546711-5547d400-64cf-11ea-94d9-4b748bcd7760.png">
+
+## 1.2.1
+
+2020-03-13 / hotfix
+
+- 판매중지 하는 곳 (break) 추가로 인한 hotfix
