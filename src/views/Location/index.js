@@ -64,6 +64,7 @@ export default {
       <i id="searchLoaction" class="fas fa-thumbtack"></i>
       `;
       this.load = true;
+      if (this.searchLoacte) this.searchLoacte.setMap(null);
 
       const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
       this.maskInfo(val.lat, val.lng, this.getMapLevel());
@@ -74,6 +75,7 @@ export default {
         content: content,
         zIndex: 2
       });
+      this.searchLoacte = overLay;
       this.map.panTo(moveLatLon);
       if (document.body.offsetWidth <= 414) this.showSidebar = false;
     },
