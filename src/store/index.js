@@ -1,18 +1,32 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
-import appKey from '@/assets/common/appKey.js';
-
 import search from './module/search/index.js';
+import check from './module/check/index.js';
+
 Vue.use(Vuex);
 
+const subscriber = store => {
+  store.subscribe((mutation, state) => {
+    localStorage.setItem('showModal', JSON.stringify(state));
+  });
+};
+
 export default new Vuex.Store({
-  state: {
-    appKey: appKey
-  },
+  state: {},
   mutations: {},
-  actions: {},
+  actions: {
+    initStore() {
+      if (localStorage.getItem('showModal')) {
+        this.replaceState(
+          Object.assign(JSON.parse(localStorage.getItem('showModal')))
+        );
+      }
+    }
+  },
   modules: {
-    search
-  }
+    search,
+    check
+  },
+  plugins: [subscriber]
 });

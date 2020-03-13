@@ -24,6 +24,7 @@ a:hover {
 }
 .locateNow,
 .showIcon,
+.refreshIcon,
 .sidebarHide {
   width: 25px;
   height: 25px;
@@ -40,9 +41,14 @@ a:hover {
 }
 .locateNow:hover,
 .showIcon:hover,
-.sidebarHide:hover {
+.sidebarHide:hover,
+.refreshIcon:hover {
   transform: scale(1.1);
   transition: all 0.2s;
+}
+.activeShowIcon {
+  background-color: transparent;
+  color: rgba(78, 83, 242, 1);
 }
 #map {
   width: 100vw;
@@ -231,6 +237,18 @@ a:hover {
   transition: all 0.2s;
 }
 
+#myLoaction {
+  color: #007bff;
+  font-size: 56px;
+  z-index: 9999;
+  position: absolute;
+}
+#searchLoaction {
+  color: #007bff;
+  font-size: 56px;
+  z-index: 9999;
+  position: absolute;
+}
 @media screen and (max-width: 414px) {
   .sidebar {
     width: 100vw;

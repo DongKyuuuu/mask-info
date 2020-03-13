@@ -1,5 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
+import store from '@/store/index';
+import Meta from 'vue-meta';
+
+Vue.use(Meta);
 Vue.use(VueRouter);
 
 const routes = [
@@ -21,4 +25,11 @@ const router = new VueRouter({
   routes
 });
 
+router.beforeEach((to, from, next) => {
+  console.log('check');
+  if (to === '/') {
+    store.dispatch('check/checkDate');
+  }
+  next();
+});
 export default router;

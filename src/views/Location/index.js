@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import SearchForm from '@/components/search/index.vue';
 import OutputForm from '@/components/output/index.vue';
 import NotiModal from '@/components/modal/notice/index.vue';
@@ -27,7 +29,8 @@ export default {
       },
       refreshList: 0,
       noShow: false,
-      markerLocate: []
+      markerLocate: [],
+      searchLoacte: ''
     };
   },
   methods: {
@@ -57,9 +60,22 @@ export default {
       return levelData;
     },
     changeGeo(val) {
+      let content = `
+      <i id="searchLoaction" class="fas fa-thumbtack"></i>
+      `;
       this.load = true;
+      if (this.searchLoacte) this.searchLoacte.setMap(null);
+
       const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
       this.maskInfo(val.lat, val.lng, this.getMapLevel());
+
+      let overLay = new kakao.maps.CustomOverlay({
+        map: this.map,
+        position: new kakao.maps.LatLng(val.lat, val.lng),
+        content: content,
+        zIndex: 2
+      });
+      this.searchLoacte = overLay;
       this.map.panTo(moveLatLon);
       if (document.body.offsetWidth <= 414) this.showSidebar = false;
     },
@@ -106,7 +122,6 @@ export default {
         if (result[i].remain_stat === undefined) maskText = '미확인';
         if (result[i].remain_stat === 'break') maskText = '판매중지';
 
-        console.log(result[i]);
         const content = `
       <div id="${result[i].remain_stat}">
         <div class="info">
@@ -124,7 +139,8 @@ export default {
           let overLay = new kakao.maps.CustomOverlay({
             map: this.map,
             position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
-            content: content
+            content: content,
+            zIndex: -3
           });
           if (empty) this.markerLocate.push(overLay);
         }
@@ -133,6 +149,9 @@ export default {
     },
     async geoInfo() {
       const vm = this;
+      const content = `
+      <i id="myLoaction" class="fas fa-map-marker-alt"></i>
+      `;
       this.load = true;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -142,6 +161,14 @@ export default {
           );
           vm.nowCenter.lat = position.coords.latitude;
           vm.nowCenter.lng = position.coords.longitude;
+          let overLay = new kakao.maps.CustomOverlay({
+            map: vm.map,
+            position: new kakao.maps.LatLng(
+              position.coords.latitude,
+              position.coords.longitude
+            ),
+            content: content
+          });
           vm.map.setCenter(moveLatLon);
           vm.maskInfo(
             position.coords.latitude,
@@ -187,5 +214,43 @@ export default {
 
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
+  },
+  metaInfo: {
+    // 페이지 제목 설정
+    title: '우리동네 마스크',
+    // 제목 템플릿 설정: "Vue 앱의 검색엔진 최적화 |
+    titleTemplate: '%s | maskfind.com',
+    // <html> 요소의 속성 설정
+    htmlAttrs: {
+      // 주 언어 명시
+      lang: 'ko-KR',
+      dir: 'ltr'
+    },
+    // 메타 정보 설정
+    meta: [
+      { charset: 'utf-8' },
+      // SEO 설정
+      {
+        name: 'description',
+        content: '공공마스크 재고확인 사이트',
+        vmid: 'description'
+      },
+      {
+        name: 'keywords',
+        content:
+          '공공마스크, 마스크, 마스크 재고, 코로나, 코로나19, 코로나 마스크, 마스크 위치, 마스크 가격, 마스크 정보, 마스크 위치, 서울 마스크, 대전 마스크, 부산 마스크, 우리동네 마스크,동네 마스크'
+      },
+      { name: 'author', content: 'Dongkyu' },
+      // SNS 설정
+      {
+        property: 'og:title',
+        content: '우리동네 마스크',
+        template: chunk => `${chunk} | maskfind.com`,
+        vmid: 'og:title'
+      },
+      // 모바일 최적화
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ],
+    link: [{ rel: 'favicon', href: '/favicon.ico' }]
   }
 };

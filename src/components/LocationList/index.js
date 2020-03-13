@@ -5,11 +5,6 @@ export default {
         lat: '',
         lng: ''
       },
-      page: {
-        total: 0,
-        per: 0,
-        show: 3
-      },
       lists: []
     };
   },
@@ -18,7 +13,7 @@ export default {
       const payload = {
         lat: Number(this.geo.lat),
         lng: Number(this.geo.lng),
-        m: 1000
+        m: 3000
       };
 
       const result = await this.$store.dispatch('search/getMaskInfo', payload);
@@ -41,9 +36,6 @@ export default {
       } catch (e) {
         console.error(e);
       }
-      if (this.lists.length % this.page.show === 0)
-        this.page.total = this.lists.length / this.page.show;
-      else this.page.total = 1 + Math.floor(this.lists.length / this.page.show);
     },
     clickAction(lat, lng) {
       const payload = {
@@ -51,13 +43,6 @@ export default {
         lng: lng
       };
       this.$emit('geo', payload);
-    }
-  },
-  computed: {
-    showList() {
-      const start = this.page.per * this.page.show;
-      const end = (this.page.per + 1) * this.page.show;
-      return this.lists.slice(start, end);
     }
   },
   mounted() {
@@ -71,10 +56,6 @@ export default {
       this.geo.lng = this.location.lng;
       this.lists = [];
       this.getList();
-    },
-    'page.per'(newVal, oldVal) {
-      if (newVal + 1 > this.page.total) this.page.per = 0;
-      if (newVal < 0 || oldVal === 0) this.page.per = this.page.total - 1;
     }
   },
   props: ['location', 'refreshList']

@@ -36,7 +36,19 @@
 }
 .addrResult {
   height: 300px;
+  overflow-y: auto;
 }
+.addrResult::-webkit-scrollbar {
+  width: 8px;
+}
+.addrResult::-webkit-scrollbar-thumb {
+  background-color: #fff;
+  border-radius: 10px;
+}
+.addrResult::-webkit-scrollbar-track {
+  background-color: none;
+}
+
 .addrResult .list-item {
   padding: 8px;
   cursor: pointer;
@@ -44,6 +56,7 @@
 .addrResult .list-item:hover {
   font-weight: 600;
   font-size: 18px;
+  transition: all 0.1s;
 }
 .pageNation {
   display: flex;

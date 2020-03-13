@@ -37,7 +37,7 @@
               <div class="footer-text">
                 지연된 정보임을 인지 하였고, 사용에 동의 하십니까?
               </div>
-              <div class="footer-btn" @click="$emit('close')">
+              <div class="footer-btn" @click="changeSet()">
                 <div>동의합니다</div>
               </div>
             </div>

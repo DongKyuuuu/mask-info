@@ -3,11 +3,11 @@
     <div class="list">
       <div class="list-title">
         <span id="title">판매중:</span> {{ lists.length }}
-        <span id="sub">(현재위치 기준 1km)</span>
+        <span id="sub">(현재위치 기준 3km)</span>
       </div>
       <hr />
       <div class="outputList">
-        <div class="items" v-for="list in showList" :key="list.code">
+        <div class="items" v-for="list in lists" :key="list.code">
           <div
             :class="list.remain_stat"
             class="items-wrap"
@@ -22,14 +22,6 @@
         </div>
       </div>
       <hr />
-      <div class="pageNation">
-        <div class="beforePage" @click="page.per -= 1">
-          <
-        </div>
-        <div class="afterPage" @click="page.per += 1">
-          >
-        </div>
-      </div>
     </div>
   </div>
 </template>
