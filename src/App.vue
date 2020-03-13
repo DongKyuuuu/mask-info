@@ -6,6 +6,6 @@
 
 <style>
 #app {
-  font-family: NanumGothic, 'Malgun Gothic', dotum, 돋움, sans-serif;
+  font-family: 'Nanum Gothic', 'Malgun Gothic', dotum, 돋움, sans-serif;
 }
 </style>
