@@ -1,3 +1,5 @@
+import moment from 'moment';
+
 import SearchForm from '@/components/search/index.vue';
 import OutputForm from '@/components/output/index.vue';
 import NotiModal from '@/components/modal/notice/index.vue';
@@ -27,7 +29,8 @@ export default {
       },
       refreshList: 0,
       noShow: false,
-      markerLocate: []
+      markerLocate: [],
+      searchLoacte: ''
     };
   },
   methods: {
@@ -57,9 +60,20 @@ export default {
       return levelData;
     },
     changeGeo(val) {
+      let content = `
+      <i id="searchLoaction" class="fas fa-thumbtack"></i>
+      `;
       this.load = true;
+
       const moveLatLon = new kakao.maps.LatLng(val.lat, val.lng);
       this.maskInfo(val.lat, val.lng, this.getMapLevel());
+
+      let overLay = new kakao.maps.CustomOverlay({
+        map: this.map,
+        position: new kakao.maps.LatLng(val.lat, val.lng),
+        content: content,
+        zIndex: 2
+      });
       this.map.panTo(moveLatLon);
       if (document.body.offsetWidth <= 414) this.showSidebar = false;
     },
@@ -106,7 +120,6 @@ export default {
         if (result[i].remain_stat === undefined) maskText = '미확인';
         if (result[i].remain_stat === 'break') maskText = '판매중지';
 
-        console.log(result[i]);
         const content = `
       <div id="${result[i].remain_stat}">
         <div class="info">
@@ -124,7 +137,8 @@ export default {
           let overLay = new kakao.maps.CustomOverlay({
             map: this.map,
             position: new kakao.maps.LatLng(result[i].lat, result[i].lng),
-            content: content
+            content: content,
+            zIndex: -3
           });
           if (empty) this.markerLocate.push(overLay);
         }
@@ -133,6 +147,9 @@ export default {
     },
     async geoInfo() {
       const vm = this;
+      const content = `
+      <i id="myLoaction" class="fas fa-map-marker-alt"></i>
+      `;
       this.load = true;
       if ('geolocation' in navigator) {
         navigator.geolocation.getCurrentPosition(function(position) {
@@ -142,6 +159,14 @@ export default {
           );
           vm.nowCenter.lat = position.coords.latitude;
           vm.nowCenter.lng = position.coords.longitude;
+          let overLay = new kakao.maps.CustomOverlay({
+            map: vm.map,
+            position: new kakao.maps.LatLng(
+              position.coords.latitude,
+              position.coords.longitude
+            ),
+            content: content
+          });
           vm.map.setCenter(moveLatLon);
           vm.maskInfo(
             position.coords.latitude,

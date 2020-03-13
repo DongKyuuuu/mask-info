@@ -231,6 +231,18 @@ a:hover {
   transition: all 0.2s;
 }
 
+#myLoaction {
+  color: #007bff;
+  font-size: 56px;
+  z-index: 9999;
+  position: absolute;
+}
+#searchLoaction {
+  color: #007bff;
+  font-size: 56px;
+  z-index: 9999;
+  position: absolute;
+}
 @media screen and (max-width: 414px) {
   .sidebar {
     width: 100vw;

@@ -25,7 +25,9 @@ const router = new VueRouter({
 
 router.beforeEach((to, from, next) => {
   console.log('check');
-  store.dispatch('check/checkDate');
+  if (to === '/') {
+    store.dispatch('check/checkDate');
+  }
   next();
 });
 export default router;
