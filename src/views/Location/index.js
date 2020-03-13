@@ -214,5 +214,42 @@ export default {
 
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
+  },
+  metaInfo: {
+    // 페이지 제목 설정
+    title: '우리동네 마스크',
+    // 제목 템플릿 설정: "Vue 앱의 검색엔진 최적화 |
+    titleTemplate: '%s | maskfind.com',
+    // <html> 요소의 속성 설정
+    htmlAttrs: {
+      // 주 언어 명시
+      lang: 'ko-KR',
+      dir: 'ltr'
+    },
+    // 메타 정보 설정
+    meta: [
+      { charset: 'utf-8' },
+      // SEO 설정
+      {
+        name: 'description',
+        content: '공공마스크 재고확인 사이트',
+        vmid: 'description'
+      },
+      {
+        name: 'keywords',
+        content:
+          '공공마스크, 마스크, 마스크 재고, 코로나, 코로나19, 코로나 마스크, 마스크 위치, 마스크 가격, 마스크 정보, 마스크 위치, 서울 마스크, 대전 마스크, 부산 마스크, 우리동네 마스크'
+      },
+      { name: 'author', content: 'Dongkyu' },
+      // SNS 설정
+      {
+        property: 'og:title',
+        content: '우리동네 마스크',
+        template: chunk => `${chunk} | maskfind.com`,
+        vmid: 'og:title'
+      },
+      // 모바일 최적화
+      { name: 'viewport', content: 'width=device-width, initial-scale=1' }
+    ]
   }
 };
