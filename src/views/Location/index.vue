@@ -15,7 +15,14 @@
         </div>
       </div>
       <div class="map-top-right">
-        <div class="showIcon" @click="showControl">
+        <div class="refreshIcon" @click="changeGeo(nowCenter)">
+          <i class="fas fa-sync-alt"></i>
+        </div>
+        <div
+          class="showIcon"
+          :class="{ activeShowIcon: noShow }"
+          @click="showControl"
+        >
           <i class="fas fa-eye-slash"> </i>
         </div>
         <div class="locateNow" @click="geoInfo()">
@@ -35,7 +42,7 @@
               <span> 지도 검색 </span>
             </div>
             <div class="listItem" @click="changeMenu('showList')">
-              <span> 목록 보기 </span>
+              <span> 모아 보기 </span>
             </div>
             <!-- <div class="listItem" @click="changeMenu('showNews')">
               <span> 관련 소식 </span>
