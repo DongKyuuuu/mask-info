@@ -150,11 +150,11 @@ export default {
     async geoInfo() {
       const vm = this;
       const content = `
+      this.load = true;
       <i id="myLoaction" class="fas fa-map-marker-alt"></i>
       `;
-      this.load = true;
       if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
+        await navigator.geolocation.getCurrentPosition(function(position) {
           const moveLatLon = new kakao.maps.LatLng(
             position.coords.latitude,
             position.coords.longitude
