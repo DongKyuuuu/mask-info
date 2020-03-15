@@ -149,8 +149,8 @@ export default {
     },
     async geoInfo() {
       const vm = this;
-      const content = `
       this.load = true;
+      const content = `
       <i id="myLoaction" class="fas fa-map-marker-alt"></i>
       `;
       if ('geolocation' in navigator) {
