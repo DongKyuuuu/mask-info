@@ -161,6 +161,7 @@ export default {
           );
           vm.nowCenter.lat = position.coords.latitude;
           vm.nowCenter.lng = position.coords.longitude;
+          vm.refreshList += 1;
           let overLay = new kakao.maps.CustomOverlay({
             map: vm.map,
             position: new kakao.maps.LatLng(
@@ -210,7 +211,7 @@ export default {
 
       vm.nowCenter.lat = data.Ha;
       vm.nowCenter.lng = data.Ga;
-      vm.refreshList += 1;
+      // vm.refreshList += 1;
 
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
