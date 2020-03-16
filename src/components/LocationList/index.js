@@ -6,10 +6,11 @@ export default {
         lng: ''
       },
       lists: [],
-      subShow: false
+      subShow: false //false === '현재 위치', true === '지도 위치'
     };
   },
   methods: {
+    // 모아 보기 결과 가져오기
     async getList() {
       const payload = {
         lat: Number(this.geo.lat),
@@ -17,6 +18,7 @@ export default {
         m: 3000
       };
 
+      // 검색 결과 reqeust
       const result = await this.$store.dispatch('search/getMaskInfo', payload);
       const ins = result.stores;
       try {

@@ -11,12 +11,35 @@ hr {
   width: 100%;
   box-sizing: border-box;
 }
+
+/* 
+  검색 결과 부분
+*/
+
+.list-wrap .list .list-title {
+  display: flex;
+  flex-direction: row;
+}
+.list-wrap .list .list-title #title {
+  font-size: 18px;
+  font-weight: 550;
+}
+.list-wrap .list .list-title #sub {
+  font-size: 12px;
+  align-self: flex-end;
+}
+
+/* 
+  검색 결과 부분
+*/
 .list-wrap .list .outputList {
   width: 100%;
   height: 360px;
   padding-top: 8px;
   overflow-y: auto;
 }
+
+/* 검색 결과 스크롤 커스텀 */
 .list-wrap .list .outputList::-webkit-scrollbar {
   width: 8px;
 }
@@ -27,6 +50,8 @@ hr {
 .list-wrap .list .outputList::-webkit-scrollbar-track {
   background-color: none;
 }
+
+/* 검색 결과 items 공통 css */
 .list-wrap .list .outputList .items .items-wrap {
   border: 3px solid;
   padding: 12px;
@@ -42,6 +67,8 @@ hr {
   font-size: 14px;
   color: #fff !important;
 }
+
+/* 검색 결과 별 border */
 .list-wrap .list .outputList .items .few {
   border: 3px solid #dc3545;
 }
@@ -65,16 +92,4 @@ hr {
   font-size: 16px;
   font-weight: 550;
   padding-bottom: 10px;
-}
-.list-wrap .list .list-title {
-  display: flex;
-  flex-direction: row;
-}
-.list-wrap .list .list-title #title {
-  font-size: 18px;
-  font-weight: 550;
-}
-.list-wrap .list .list-title #sub {
-  font-size: 12px;
-  align-self: flex-end;
 }
