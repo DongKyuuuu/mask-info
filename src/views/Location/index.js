@@ -1,5 +1,3 @@
-import moment from 'moment';
-
 import SearchForm from '@/components/search/index.vue';
 import NotiModal from '@/components/modal/notice/index.vue';
 import LocationList from '@/components/LocationList/index.vue';
@@ -22,6 +20,7 @@ export default {
       showList: false,
       showNews: false,
       nowCenter: {
+        //현재 위치 정보가 없는 경우 강남역 기준
         lat: 37.498151,
         lng: 127.027575
       },
@@ -33,6 +32,7 @@ export default {
     };
   },
   methods: {
+    // 재고없음 안보기 상태일때
     showControl() {
       this.noShow = !this.noShow;
       for (let i = 0; i < this.markerLocate.length; i++) {
@@ -58,6 +58,7 @@ export default {
       if (level === 6) levelData = 5000;
       return levelData;
     },
+    // 지도 이동 관련
     changeGeo(val) {
       let content = `
       <i id="searchLoaction" class="fas fa-thumbtack"></i>
@@ -92,6 +93,7 @@ export default {
         })
         .catch(e => {});
     },
+    // 맵 마커 생성
     mapMarker(result, count) {
       for (let i = 0; i < count; i++) {
         let check = false;
@@ -146,7 +148,8 @@ export default {
       }
       this.load = false;
     },
-    async geoInfo() {
+    // 현재 위치 관련
+    geoInfo() {
       const vm = this;
       this.load = true;
 
@@ -154,7 +157,7 @@ export default {
       <i id="myLoaction" class="fas fa-map-marker-alt"></i>
       `;
       if ('geolocation' in navigator) {
-        await navigator.geolocation.getCurrentPosition(
+        navigator.geolocation.getCurrentPosition(
           function(position) {
             const moveLatLon = new kakao.maps.LatLng(
               position.coords.latitude,
@@ -179,6 +182,7 @@ export default {
             );
           },
           function(err) {
+            // 사용자가 현재 위치 정보 제공을 거절 했을 경우
             vm.deniedLocation = true;
           }
         );
@@ -191,7 +195,6 @@ export default {
     const vm = this;
     let container = document.getElementById('map'); //지도를 담을 영역의 DOM 레퍼런스
     let options = {
-      //37.484647, 126.895023
       center: new kakao.maps.LatLng(37.498151, 127.027575), //지도의 중심좌표.
       level: 3
     };
@@ -200,7 +203,7 @@ export default {
     this.map.setMaxLevel(6); // 최대 축소영역 설정
     this.map.setMinLevel(1); // 최소 축소영역 설정
 
-    this.geoInfo();
+    this.geoInfo(); // 현재 위치 정보
     kakao.maps.event.addListener(this.map, 'dragend', function() {
       let data = vm.map.getCenter();
       let level = vm.map.getLevel();
@@ -219,6 +222,7 @@ export default {
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });
   },
+  // *** meta정보 ***
   metaInfo: {
     // 페이지 제목 설정
     title: '우리동네 마스크',
