@@ -3,7 +3,8 @@
     <div class="list">
       <div class="list-title">
         <span id="title">판매중:</span> {{ lists.length }}
-        <span id="sub">(현재위치 기준 3km)</span>
+        <div id="sub" v-if="!subShow">(현재위치 기준 3km)</div>
+        <div id="sub" v-else>(지도위치 기준 3km)</div>
       </div>
       <hr />
       <div class="outputList">
