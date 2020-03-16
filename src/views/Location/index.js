@@ -1,14 +1,12 @@
 import moment from 'moment';
 
 import SearchForm from '@/components/search/index.vue';
-import OutputForm from '@/components/output/index.vue';
 import NotiModal from '@/components/modal/notice/index.vue';
 import LocationList from '@/components/LocationList/index.vue';
 
 export default {
   components: {
     SearchForm,
-    OutputForm,
     NotiModal,
     LocationList
   },
