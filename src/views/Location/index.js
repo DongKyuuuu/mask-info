@@ -30,7 +30,8 @@ export default {
       refreshList: 0,
       noShow: false,
       markerLocate: [],
-      searchLoacte: ''
+      searchLoacte: '',
+      deniedLocation: false
     };
   },
   methods: {
@@ -149,36 +150,41 @@ export default {
     },
     async geoInfo() {
       const vm = this;
+      this.load = true;
+
       const content = `
       <i id="myLoaction" class="fas fa-map-marker-alt"></i>
       `;
-      this.load = true;
       if ('geolocation' in navigator) {
-        navigator.geolocation.getCurrentPosition(function(position) {
-          const moveLatLon = new kakao.maps.LatLng(
-            position.coords.latitude,
-            position.coords.longitude
-          );
-          vm.nowCenter.lat = position.coords.latitude;
-          vm.nowCenter.lng = position.coords.longitude;
-          let overLay = new kakao.maps.CustomOverlay({
-            map: vm.map,
-            position: new kakao.maps.LatLng(
+        await navigator.geolocation.getCurrentPosition(
+          function(position) {
+            const moveLatLon = new kakao.maps.LatLng(
               position.coords.latitude,
               position.coords.longitude
-            ),
-            content: content
-          });
-          vm.map.setCenter(moveLatLon);
-          vm.maskInfo(
-            position.coords.latitude,
-            position.coords.longitude,
-            vm.getMapLevel()
-          );
-        });
+            );
+            vm.nowCenter.lat = position.coords.latitude;
+            vm.nowCenter.lng = position.coords.longitude;
+            vm.refreshList += 1;
+            let overLay = new kakao.maps.CustomOverlay({
+              map: vm.map,
+              position: new kakao.maps.LatLng(
+                position.coords.latitude,
+                position.coords.longitude
+              ),
+              content: content
+            });
+            vm.map.setCenter(moveLatLon);
+            vm.maskInfo(
+              position.coords.latitude,
+              position.coords.longitude,
+              vm.getMapLevel()
+            );
+          },
+          function(err) {
+            vm.deniedLocation = true;
+          }
+        );
         this.load = false;
-      } else {
-        alert('위치정보를 불러올 수 없습니다.');
       }
     }
   },
@@ -210,7 +216,7 @@ export default {
 
       vm.nowCenter.lat = data.Ha;
       vm.nowCenter.lng = data.Ga;
-      vm.refreshList += 1;
+      if (vm.deniedLocation) vm.refreshList += 1;
 
       vm.maskInfo(data.Ha, data.Ga, levelData);
     });

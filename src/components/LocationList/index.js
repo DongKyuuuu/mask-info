@@ -5,7 +5,8 @@ export default {
         lat: '',
         lng: ''
       },
-      lists: []
+      lists: [],
+      subShow: false
     };
   },
   methods: {
@@ -48,15 +49,17 @@ export default {
   mounted() {
     this.geo.lat = this.location.lat;
     this.geo.lng = this.location.lng;
+    this.subShow = this.info;
     this.getList();
   },
   watch: {
     refreshList() {
       this.geo.lat = this.location.lat;
       this.geo.lng = this.location.lng;
+      this.subShow = this.info;
       this.lists = [];
       this.getList();
     }
   },
-  props: ['location', 'refreshList']
+  props: ['location', 'refreshList', 'info']
 };

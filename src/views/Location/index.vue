@@ -55,6 +55,7 @@
             <location-list
               :location="nowCenter"
               :refreshList="refreshList"
+              :info="deniedLocation"
               @geo="val => changeGeo(val)"
             />
           </div>

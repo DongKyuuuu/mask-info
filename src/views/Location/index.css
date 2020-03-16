@@ -203,7 +203,7 @@ a:hover {
   text-align: left;
   padding: 5px 5px;
   border-radius: 6px;
-  z-index: 100;
+  z-index: 9999;
 }
 #plenty .info .detail .detail-item,
 #some .info .detail .detail-item,
@@ -223,6 +223,7 @@ a:hover {
 #undefiend:hover .info .detail,
 #break:hover .info .detail {
   visibility: visible;
+  z-index: 9999;
 }
 
 .sidefade-enter,
@@ -238,15 +239,17 @@ a:hover {
 }
 
 #myLoaction {
-  color: #007bff;
+  color: rgba(78, 83, 242, 1);
   font-size: 56px;
   z-index: 9999;
+  opacity: 0.99;
   position: absolute;
 }
 #searchLoaction {
-  color: #007bff;
+  color: rgba(78, 83, 242, 1);
   font-size: 56px;
   z-index: 9999;
+  opacity: 0.99;
   position: absolute;
 }
 @media screen and (max-width: 414px) {
