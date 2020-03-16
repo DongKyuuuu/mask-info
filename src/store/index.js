@@ -6,6 +6,7 @@ import check from './module/check/index.js';
 
 Vue.use(Vuex);
 
+// 로컬스토리지에 현재 state 저장
 const subscriber = store => {
   store.subscribe((mutation, state) => {
     localStorage.setItem('showModal', JSON.stringify(state));
