@@ -9,14 +9,8 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: '/',
-    name: 'Home',
     component: () => import('@/views/Location/index.vue')
   }
-  // {
-  //   path: '/location',
-  //   name: 'location',
-  //   component: () => import('@/views/Location/index.vue')
-  // }
 ];
 
 const router = new VueRouter({
@@ -26,7 +20,7 @@ const router = new VueRouter({
 });
 
 router.beforeEach((to, from, next) => {
-  console.log('check');
+  // modal 출력 여부 검사
   if (to === '/') {
     store.dispatch('check/checkDate');
   }

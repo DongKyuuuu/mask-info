@@ -6,6 +6,7 @@ export default {
     };
   },
   methods: {
+    // 검색
     async fetch() {
       try {
         this.page = {

@@ -9,7 +9,7 @@
       />
       <i @click="fetch()" class="fas fa-search"></i>
     </div>
-    <hr id="divLine" />
+    <hr />
     <div class="addrResult">
       <div v-if="!lists">
         검색어를 입력해주세요
@@ -24,7 +24,7 @@
         {{ list.place_name }}
       </div>
     </div>
-    <hr id="divLine" />
+    <hr />
   </div>
 </template>
 
