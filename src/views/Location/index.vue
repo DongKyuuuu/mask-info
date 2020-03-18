@@ -67,7 +67,7 @@
               <p>Developer : DongKyu</p>
               <p>
                 Contact :
-                <a href="mailTo:rnfh1223@gmail.com"> rnfh1223@gmail.com </a>
+                <a href="mailTo:desktop@kakao.com"> desktop@kakao.com </a>
               </p>
             </div>
           </div>
