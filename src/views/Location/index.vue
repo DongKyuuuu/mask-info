@@ -21,7 +21,7 @@
         <div
           class="showIcon"
           :class="{ activeShowIcon: noShow }"
-          @click="showControl"
+          @click="showControl()"
         >
           <i class="fas fa-eye-slash"> </i>
         </div>
