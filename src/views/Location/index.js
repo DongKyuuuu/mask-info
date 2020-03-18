@@ -35,8 +35,14 @@ export default {
     // 재고없음 안보기 상태일때
     showControl() {
       this.noShow = !this.noShow;
-      for (let i = 0; i < this.markerLocate.length; i++) {
-        this.markerLocate[i].setMap(null);
+      if (this.noShow) {
+        for (let i = 0; i < this.markerLocate.length; i++) {
+          this.markerLocate[i].setMap(null);
+        }
+      } else {
+        for (let i = 0; i < this.markerLocate.length; i++) {
+          this.markerLocate[i].setMap(this.map);
+        }
       }
     },
     changeMenu(select) {

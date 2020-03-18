@@ -28,8 +28,8 @@ a:hover {
 }
 /* 재고없음 표시안함 아이콘 활성화 css */
 .activeShowIcon {
-  background-color: transparent;
-  color: rgba(78, 83, 242, 1);
+  background-color: transparent !important;
+  color: rgba(78, 83, 242, 1) !important;
 }
 /* 위치정보로 불러온 위치 마커 css */
 #myLoaction {
