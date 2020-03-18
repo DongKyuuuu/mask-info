@@ -67,7 +67,7 @@
               <p>Developer : DongKyu</p>
               <p>
                 Contact :
-                <a href="mailTo:admin@maskfind.com"> admin@maskfind.com </a>
+                <a href="mailTo:rnfh1223@gmail.com"> rnfh1223@gmail.com </a>
               </p>
             </div>
           </div>
