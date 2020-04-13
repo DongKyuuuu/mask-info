@@ -69,3 +69,11 @@
 2020-03-18 bug
 
 - 재고없음 표시 지우기 아이콘 활성화 표시 안되는거 수정
+
+## 1.3.4
+
+2020-04-13 aws, favicon, sourcemap
+
+- aws s3 버킷, cloudfront 보안 사항 추가
+- favicon 추가
+- Production sourceMap 보안 설정
