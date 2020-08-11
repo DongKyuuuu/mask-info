@@ -77,3 +77,6 @@
 - aws s3 버킷, cloudfront 보안 사항 추가
 - favicon 추가
 - Production sourceMap 보안 설정
+
+## 2020-08-11
+서비스 종료
